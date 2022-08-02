@@ -1,0 +1,10 @@
+p.error{
+    color: red;
+    border: dotted 3px red;
+}
+
+
+p.sucess{
+    color: green;
+    border: solid 3px green;
+}
