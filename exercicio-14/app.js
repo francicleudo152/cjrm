@@ -4,6 +4,13 @@
   - Faça com que o texto do h1 do index.html seja exibido com todas as letras  
     maiúsculas.
 */
+const h1 = document.querySelector('h1');
+h1.innerHTML = h1.textContent.toLocaleLowerCase();
+
+
+
+
+
 
 
 
