@@ -7,13 +7,6 @@
 const h1 = document.querySelector('h1');
 h1.innerHTML = h1.textContent.toLocaleLowerCase();
 
-
-
-
-
-
-
-
 /*
   02
 
@@ -22,6 +15,15 @@ h1.innerHTML = h1.textContent.toLocaleLowerCase();
 */
 
 const numbers = [ 53, 24, 3, 8, 1, 6, 57, 80, 77, 98, 55 ]
+
+const ul = document.querySelector('.numbers');
+
+numbers.forEach((number)=>{
+  ul.innerHTML += `<li>${number}</li>`;
+
+})
+
+
 
 /*
   03
