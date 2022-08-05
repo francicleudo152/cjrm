@@ -5,34 +5,44 @@
     maiúsculas.
 */
 const h1 = document.querySelector('h1');
-h1.innerHTML = h1.textContent.toLocaleLowerCase();
+h1.innerHTML = h1.textContent.toLocaleUpperCase();
 
 /*
   02
-
+  
   - Adicione, na ul vazia do index.html, os números do array "numbers" abaixo;
   - Cada número deve estar dentro de uma <li> com a classe "number".
-*/
-
-const numbers = [ 53, 24, 3, 8, 1, 6, 57, 80, 77, 98, 55 ]
-
-const ul = document.querySelector('.numbers');
-
-numbers.forEach((number)=>{
-  ul.innerHTML += `<li>${number}</li>`;
-
-})
-
-
-
-/*
+  */
+ 
+ const numbers = [ 53, 24, 3, 8, 1, 6, 57, 80, 77, 98, 55 ]
+ const ul = document.querySelector('.numbers');
+ 
+ numbers.forEach(number =>{
+   ul.innerHTML += `<li class="number">${number}</li>`;
+  })
+  
+  
+  
+  /*
   03
-
+  
   - Modifique as cores dos números dentro da ul da seguinte forma:
-    - Se o número é par, ele deve ser exibido na cor "lightblue";
-    - Se o número é ímpar, exiba-o na cor "pink".
-*/
+  - Se o número é par, ele deve ser exibido na cor "lightblue";
+  - Se o número é ímpar, exiba-o na cor "pink".
+  */
+ 
+ const lis = document.querySelectorAll('li');
+ 
+ lis.forEach(li =>{
+  let isPar = Number(li.innerHTML) % 2 === 0;
 
+  if(isPar){
+    li.style.color = "lightblue"
+    return
+  }
+     li.style.color = "pink"
+   
+})
 
 
 /*
@@ -43,6 +53,8 @@ numbers.forEach((number)=>{
   P.s: a classe "body-background" já está declarada no style.css.
 */
 
+const body = document.querySelector('body')
+body.classList.add("body-background");
 
 
 /*
@@ -54,6 +66,14 @@ numbers.forEach((number)=>{
 */
 
 
+const link = document.querySelector('.link');
+
+// primeira forma 
+// link.href = "https://github.com/roger-melo-treinamentos/curso-de-js-roger-melo";
+
+// segunda forma 
+link.setAttribute('href', "https://github.com/roger-melo-treinamentos/curso-de-js-roger-melo")
+
 
 /*
   06
@@ -61,6 +81,12 @@ numbers.forEach((number)=>{
   - Exiba o novo valor do atributo href do link no console.
 */
 
+// primeira forma 
+console.log(link.href);
+
+// segunda forma
+
+console.log(link.getAttribute('href'));
 
 
 /*
@@ -69,6 +95,7 @@ numbers.forEach((number)=>{
   - Exiba, no console, um objeto com todas as propriedades CSS que podem ser  
     manipuladas via JS no h1.
 */
+console.log(h1.style);
 
 
 
@@ -77,7 +104,11 @@ numbers.forEach((number)=>{
 
   - Remova a classe "body-background", do elemento body.
 */
+// primeira forma
+body.removeAttribute('class');
 
+// segunda Forma
+body.classList.remove;
 
 
 /*
@@ -86,3 +117,5 @@ numbers.forEach((number)=>{
   - Se o link da página possuir uma classe "link", remova-a;
   - Não utilize o método remove() para fazer isso.
 */
+    link.classList.toggle('link');
+    // link.classList.toggle('link');
