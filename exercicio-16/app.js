@@ -7,10 +7,17 @@
 
 const div = document.querySelector('div')
 const elementsInsideDiv = Array.from(div.children)
+const h2 = document.createElement("h2");
 
 elementsInsideDiv.forEach(element => {
-  element.addEventListener('click', () => {
-    console.log('Clicou no filho da div.')
+  element.addEventListener('click', event => {
+    // console.log('Clicou no filho da div.')
+    const nomeTag = event.target.nodeName;
+    h2.textContent = "clique em algum filho da div";
+    div.prepend(h2)
+    console.log(`"Clicou no ${nomeTag.toLowerCase()}, filho
+    da div.".`)
+    event.stopPropagation()
   })
 })
 
@@ -34,12 +41,20 @@ div.addEventListener('click', () => {
     filho da div, ao invés de ser exibida no console, seja inserida neste h2.
 */
 
+
 /*
   04
 
   - Faça com que quando o texto do h2 for copiado, a mensagem "Texto copiado!"  
     seja exibida no console.
 */
+
+h2.addEventListener('copy', () => {
+  console.log("Texto copiado!")
+})
+
+
+
 
 /*
   05
@@ -49,13 +64,22 @@ div.addEventListener('click', () => {
     "Eixo X: COORDENADA_EIXO_X | Eixo Y: COORDENADA_EIXO_Y".
 */
 
+const egg = document.querySelector('.egg');
+
+egg.addEventListener('mousemove', (event) => {
+  egg.innerHTML = `Eixo X: ${event.offsetX} | Eixo Y: ${event.offsetY}`
+})
+
 /*
   06
 
   - Modifique a cor do ovo para "lightgoldenrodyellow" quando o botão for 
     clicado.
 */
-
+const botao = document.querySelector('button');
+botao.addEventListener('click', () => {
+  egg.style.backgroundColor = "lightgoldenrodyellow";
+})
 /*
   07
 
@@ -76,3 +100,23 @@ const people = [
   { id: 8, name: 'Matheus Manucci', profession: 'Piloto' },
   { id: 9, name: 'Hamilton Silva', profession: 'Advogado' }
 ]
+
+const front = people.some(people => people.profession === 'Front-end developer')
+
+if (front) {
+  console.log("O array people contém, no mínimo, um(a) Front-end developer.")
+}
+
+
+
+
+// popup.addEventListener('click',(event)=>{
+//   const clicado = event.target.classList[0]
+//   const classNames = ['popup-wrapper','popup-close','popup-link'];
+//   const fecharPopup = classNames.some(classNames => classNames === clicado)
+//   if (fecharPopup) {
+//       popup.style.display = 'none';
+//       // console.log(clicado);
+//       return
+//   }
+// })

@@ -30,6 +30,8 @@ const lis = document.querySelectorAll('li')
 
 
 
+// aplicação do event delegation ....................................
+
 ul.addEventListener('click', event => {
     // console.log(event);
     const clicado = event.target;
