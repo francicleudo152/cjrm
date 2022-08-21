@@ -1,18 +1,20 @@
 /*
-  01
+01
 
-  - Faça com que ao clicar em um dos elementos dentro da div, a mensagem  
-    'Clicou na div.' não seja exibida no console.
+- Faça com que ao clicar em um dos elementos dentro da div, a mensagem  
+'Clicou na div.' não seja exibida no console.
 */
 
 const div = document.querySelector('div')
 const elementsInsideDiv = Array.from(div.children)
 const h2 = document.createElement("h2");
+const egg = document.querySelector('.egg');
+const botao = document.querySelector('button');
 
 elementsInsideDiv.forEach(element => {
   element.addEventListener('click', event => {
     // console.log('Clicou no filho da div.')
-    const nomeTag = event.target.nodeName;
+    const nomeTag = event.target.tagName;
     h2.textContent = "clique em algum filho da div";
     div.prepend(h2)
     console.log(`"Clicou no ${nomeTag.toLowerCase()}, filho
@@ -64,7 +66,6 @@ h2.addEventListener('copy', () => {
     "Eixo X: COORDENADA_EIXO_X | Eixo Y: COORDENADA_EIXO_Y".
 */
 
-const egg = document.querySelector('.egg');
 
 egg.addEventListener('mousemove', (event) => {
   egg.innerHTML = `Eixo X: ${event.offsetX} | Eixo Y: ${event.offsetY}`
@@ -76,7 +77,7 @@ egg.addEventListener('mousemove', (event) => {
   - Modifique a cor do ovo para "lightgoldenrodyellow" quando o botão for 
     clicado.
 */
-const botao = document.querySelector('button');
+
 botao.addEventListener('click', () => {
   egg.style.backgroundColor = "lightgoldenrodyellow";
 })

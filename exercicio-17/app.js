@@ -6,12 +6,34 @@
   - No envio do form, faça com que a página não seja recarregada.
 */
 
+const form = document.querySelector('form');
+form.addEventListener('submit',(e)=>{
+  e.preventDefault()
+  const input = e.target.input;
+  console.log(input.value);
+  const padraovalido = /.{7,}/;
+  // const padraovalido = /^[a-zA-Z0-9]{7,11}$/;
+  const inputvalido = padraovalido.test(input.value);
+
+  if (inputvalido) {
+    console.log("O valor inserido no input é válido =)");
+    input.value = '';
+    input.focus();
+    return;
+  }
+   
+  console.log( "Valor inválido =(");
+  input.value = '';
+  input.focus();
+})
+
 /*
   02
 
   - No envio do form obtenha, através do objeto event, o texto inserido no  
     input e exiba-o no console.
 */
+
 
 /*
   03
@@ -21,24 +43,37 @@
   - Exiba no console o boolean no qual este teste resulta.
 */
 
+const paragrafo = document.querySelector('p').textContent;
+const padrao = /documentation/;
+const isMatch = padrao.test(paragrafo);
+console.log(isMatch);
+
 /*
   04
 
   - Escreva uma regex que dê match com a palavra "B99" da string abaixo;
   - A regex não deve conter (literalmente) os caracteres B99;
-  - Teste se o match aconteceu e exiba o resultado no console.
+  - Teste se o match aconteceu e exiba o isMatch no console.
 */
 
+
 const B99message = 'E o Terry Crews faz tudo, inclusive tocar a abertura de B99 na flauta'
+const padrao1 = /[A-Z0-9]{3}/;
+const isMatch1 = padrao1.test(B99message);
+const isMatch2 = B99message.search(padrao1);
+console.log(isMatch1);
+console.log(isMatch2);
+
 
 /*
   05
 
   - Modifique (manualmente) o valor que a const word armazena para que o  
-    resultado do teste entre a regex e a string exibido no console seja true.
+    isMatch do teste entre a regex e a string exibido no console seja true.
 */
 
-const word = 'O que a NASA fotografou no dia do seu aniversário?'
+// const word = 'O que a NASA fotografou no dia do seu aniversário?'
+const word = 'NASA'
 const NASARegex = /^[A-Z]{4}$/
 const NASAResult = NASARegex.test(word)
 
@@ -70,15 +105,18 @@ console.log(NASAResult)
 */
 
 
-/*
-  Apenas 3 exercícios, mas que exigem um certo nível de conhecimento do que  
-  vimos até aqui =)
-*/
+
 
 
 
 
 // ------------------------------------------------------------------------------------------------
+
+/*
+  Apenas 3 exercícios, mas que exigem um certo nível de conhecimento do que  
+  vimos até aqui =)
+*/
+
 
 /*
   01
