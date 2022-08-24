@@ -5,3 +5,11 @@
 h1 {
   margin-top: 20px;
 }
+
+.success {
+  border: 5px solid green;
+}
+
+.error {
+  border: 5px solid red;
+}
