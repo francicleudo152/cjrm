@@ -20,6 +20,57 @@
   
   Dica: pesquise pelo método "insertAdjacentElement", no MDN;
 */
+const form =  document.querySelector('form');
+const button =  document.querySelector('button');
+const paragrafoFeedBack = document.createElement('p');
+const paragrafoSubmit = document.createElement('p');
+
+paragrafoSubmit.setAttribute('data','submit');
+
+const input = document.querySelector('#username');
+const usernameregex = /^[a-zA-Z]{6,}$/;
+
+const usernameValido = (elemento,paragrafo,texto) =>{
+  elemento.insertAdjacentElement('afterend', paragrafo)
+  paragrafo.textContent = texto;
+}
+
+
+form.addEventListener('input',(event)=>{
+  const username = event.target.value; 
+  const validusername = usernameregex.test(username);
+  // console.log(username);
+  // console.log(validusername);
+  const existparagrafoSubmit = document.querySelector('[data = "submit"]')
+  if (existparagrafoSubmit) {
+      // console.log('o paragrafo Existe');
+      paragrafoSubmit.remove();
+  }
+  if (!validusername) {
+    usernameValido(input,paragrafoFeedBack,'O valor deve conter no mínimo 6 caracteres, com apenas letras maiúsculas e/ou minúsculas');
+    paragrafoFeedBack.setAttribute('class','username-help-feedback')
+    return
+  }
+  usernameValido(input,paragrafoFeedBack,"Username válido =)");
+  paragrafoFeedBack.setAttribute('class','username-success-feedback')
+
+})
+
+form.addEventListener('submit',(event)=>{
+  event.preventDefault()
+  const username = input.value; 
+  console.log(username);
+  const validusername = usernameregex.test(username);
+  if (!validusername) {
+    console.log(username);
+    usernameValido(button, paragrafoSubmit,'Por favor, insira um username válido');
+    paragrafoSubmit.setAttribute('class','submit-help-feedback')
+    return
+  }
+  usernameValido(button,paragrafoSubmit,"Dados enviados =)");
+  paragrafoSubmit.setAttribute('class','submit-success-feedback')
+
+})
 
 /*
   02
