@@ -30,3 +30,12 @@ const somaNumeros = numeros.reduce((acumulador,item)=>{
 },0)
 
 console.log(somaNumeros);
+
+// utilizando o metado sort
+const nomes = ['adriano','joaquim','kele','isac']
+const numeroAleatorios = [55,33,66,87,12,54,25,1,4]
+
+nomes.sort()
+numeroAleatorios.sort((num1,num2)=>num1-num2)
+console.log(nomes);
+console.log(numeroAleatorios);
