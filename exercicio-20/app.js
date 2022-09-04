@@ -25,14 +25,12 @@ const inicia = document.querySelector('.button-init-counter');
 const display = document.querySelector('.counter-container');
 const para = document.querySelector('.button-stop-counter');
 
-let counter = 0;
 let contador = null;
-
 
 inicia.addEventListener('click', (event) => {
   contador= setInterval(() => {
-    display.textContent =  ++counter;
-         console.log(counter);
+    display.textContent = Number(display.textContent) + 1;
+         console.log(Number(display.textContent));
    
   }, 1000);
 
@@ -42,12 +40,11 @@ inicia.addEventListener('click', (event) => {
 para.addEventListener('click', () => {
   clearInterval(contador);
     const zerar = setInterval(() => {
-        display.textContent = counter;
-        console.log(counter);
-        if (counter === 0) {
+        display.textContent =  Number(display.textContent) - 1;
+        console.log(display.textContent);
+        if (display.textContent == 0) {
            return clearInterval(zerar);
           }
-        --counter;
         }, 100);
       })
 
