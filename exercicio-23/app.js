@@ -7,6 +7,9 @@
 
 const myString = '    JS      '
 
+const newString = myString.trim();
+console.log(newString);
+
 /*
   02
 
@@ -22,6 +25,11 @@ const people = [
   { firstName: 'Felipe', lastName: 'Tavares', score: 71 },
   { firstName: 'Eric', lastName: 'Silva', score: 82 }
 ]
+
+const maiorScore = people.map(people=>people.score).sort((score1,score2)=>
+{score1.score - score2.score})
+
+console.log(maiorScore);
 
 /*
   03

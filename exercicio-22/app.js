@@ -142,12 +142,17 @@ console.log(pets);
 */
 
 const ul = document.querySelector('.list-group');
+const body = document.querySelector('body')
+// const ul = document.createElement('ul');
+// body.appendChild(ul);
+console.log(); 
 
 // const exibir = topBrazilmovies.map(filme=>`<li>${filme.title}</li>`).join('');
 const exibir = topBrazilmovies.reduce((acc,{title}) => acc + `<li>${title}</li>`,'')
+
 ul.innerHTML = exibir;
 
-console.log(exibir);
+// console.log(exibir);
 
 
 /*
