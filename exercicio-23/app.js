@@ -24,14 +24,14 @@ const people = [
   { firstName: 'José', lastName: 'Antônio', score: 100 },
   { firstName: 'Felipe', lastName: 'Tavares', score: 71 },
   { firstName: 'Eric', lastName: 'Silva', score: 82 }
-]
+] 
 
-const maiorScore = people.map(people=>people.score).sort((score1,score2)=>
-{
-  score1.score - score2.score
-  // return `{${people.firstName}, ${people.lastName},${people.score}},`
-})
-console.log(maiorScore.sort());
+const maiorScore = people.map(people=>{
+  return  { firstName: people.firstName, 
+    lastName: people.lastName,
+     score: people.score}
+}).sort((score1,score2)=>score1.score - score2.score)
+console.log(maiorScore);
 
 /*
   03
@@ -46,14 +46,8 @@ console.log(maiorScore.sort());
 const animals = ['cão', 'gato', 'boi', 'leão', 'gnu', 'alce', 'ema']
 
 const animaisCom3Letras = animals.filter((animal)=>animal.length === 3);
-// const animaisCom6Letras = animals.filter((animal)=>animal.length === 6);
-// const animaisCom8Letras = animals.filter((animal)=>animal.length === 8);
-// const animaisCom2Letras = animals.filter((animal)=>animal.length === 2);
-
 console.log(animaisCom3Letras);
-// console.log(animaisCom6Letras);
-// console.log(animaisCom8Letras);
-// console.log(animaisCom2Letras);
+
 
 /*
   04
@@ -62,7 +56,8 @@ console.log(animaisCom3Letras);
     nome de cada animal. Ex.: [6, 8, 2].
 */
 
-
+const animaislength = animals.map(animal=>animal.length);
+console.log(animaislength);
 
 /*
   05
@@ -80,10 +75,8 @@ const friends = [
   { id: 5, name: 'Solange', nearMe: false }
 ]
 
-const nameNearMe = friends.filter(friend=>friend.nearMe)
+const nameNearMe = friends.filter(friend=>friend.nearMe).map(friend=>friend.name)
 console.log(nameNearMe);
-
-
 
 /*
   06
