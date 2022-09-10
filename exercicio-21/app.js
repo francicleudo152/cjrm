@@ -17,14 +17,15 @@ console.log(impares);
 
 const crazyNumbers = [937, 5, 395, 402, 501, 333, 502, 781, 3, 691]
 
-const quantosNumeros = crazyNumbers.reduce((somaNumeros, item)=>{
-  if (item < 501) {
-     somaNumeros += 1;
-  }
-  return somaNumeros
-},0)
+// const quantosNumeros = crazyNumbers.reduce((somaNumeros, item)=>{
+//   if (item < 501) {
+//      somaNumeros += 1;
+//   }
+//   return somaNumeros
+// },0)
 
-console.log(quantosNumeros);
+const quantosNumeros = crazyNumbers.filter(somaNumeros=>somaNumeros < 501)
+console.log(quantosNumeros.length);
 
 /*
   03

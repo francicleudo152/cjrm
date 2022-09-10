@@ -27,9 +27,11 @@ const people = [
 ]
 
 const maiorScore = people.map(people=>people.score).sort((score1,score2)=>
-{score1.score - score2.score})
-
-console.log(maiorScore);
+{
+  score1.score - score2.score
+  // return `{${people.firstName}, ${people.lastName},${people.score}},`
+})
+console.log(maiorScore.sort());
 
 /*
   03
@@ -42,6 +44,16 @@ console.log(maiorScore);
 */
 
 const animals = ['cão', 'gato', 'boi', 'leão', 'gnu', 'alce', 'ema']
+
+const animaisCom3Letras = animals.filter((animal)=>animal.length === 3);
+// const animaisCom6Letras = animals.filter((animal)=>animal.length === 6);
+// const animaisCom8Letras = animals.filter((animal)=>animal.length === 8);
+// const animaisCom2Letras = animals.filter((animal)=>animal.length === 2);
+
+console.log(animaisCom3Letras);
+// console.log(animaisCom6Letras);
+// console.log(animaisCom8Letras);
+// console.log(animaisCom2Letras);
 
 /*
   04
@@ -68,6 +80,9 @@ const friends = [
   { id: 5, name: 'Solange', nearMe: false }
 ]
 
+const nameNearMe = friends.filter(friend=>friend.nearMe)
+console.log(nameNearMe);
+
 
 
 /*
@@ -79,7 +94,13 @@ const friends = [
 
 const numbers = [46, 86, 212, 29, 51, 9, 25, 42, 81]
 
-/*
+const numerosImpares = numbers.filter(number=>number % 2 === 1).reduce((acc, item) => { 
+  return acc += item ;
+}, 0)
+
+console.log(numerosImpares);
+
+/* 
   07
 
   - Através do encadeamento de 2 métodos, obtenha a soma da população de todos  
@@ -99,3 +120,11 @@ const data = [{
   country: 'Indonesia',
   population: 263991379
 }]
+
+const somaPopulacao = data.filter(population=>
+  population.country != 'China').reduce((acc, item)=>
+  { return acc += item.population},0);
+
+  console.log(somaPopulacao);
+
+
