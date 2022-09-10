@@ -26,11 +26,12 @@ const people = [
   { firstName: 'Eric', lastName: 'Silva', score: 82 }
 ] 
 
-const maiorScore = people.map(people=>{
-  return  { firstName: people.firstName, 
-    lastName: people.lastName,
-     score: people.score}
-}).sort((score1,score2)=>score1.score - score2.score)
+const maiorScore = people.map(({ firstName, lastName, score }) => ({
+  firstName,
+  lastName,
+  score
+}
+)).sort((score1, score2) => score1.score - score2.score)
 console.log(maiorScore);
 
 /*
