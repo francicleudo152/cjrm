@@ -26,12 +26,9 @@ const people = [
   { firstName: 'Eric', lastName: 'Silva', score: 82 }
 ] 
 
-const maiorScore = people.map(({ firstName, lastName, score }) => ({
-  firstName,
-  lastName,
-  score
-}
-)).sort((score1, score2) => score1.score - score2.score)
+const maiorScore = people
+  .map(({ firstName, lastName, score }) => ({ firstName, lastName, score }))
+  .sort((score1, score2) => score1.score - score2.score)
 console.log(maiorScore);
 
 /*
@@ -46,7 +43,7 @@ console.log(maiorScore);
 
 const animals = ['cão', 'gato', 'boi', 'leão', 'gnu', 'alce', 'ema']
 
-const animaisCom3Letras = animals.filter((animal)=>animal.length === 3);
+const animaisCom3Letras = animals.filter(({length})=>length === 3);
 console.log(animaisCom3Letras);
 
 
@@ -57,7 +54,7 @@ console.log(animaisCom3Letras);
     nome de cada animal. Ex.: [6, 8, 2].
 */
 
-const animaislength = animals.map(animal=>animal.length);
+const animaislength = animals.map(({length})=>length);
 console.log(animaislength);
 
 /*
@@ -76,7 +73,7 @@ const friends = [
   { id: 5, name: 'Solange', nearMe: false }
 ]
 
-const nameNearMe = friends.filter(friend=>friend.nearMe).map(friend=>friend.name)
+const nameNearMe = friends.filter(({nearMe})=>nearMe).map(({name})=>name);
 console.log(nameNearMe);
 
 /*
@@ -88,10 +85,9 @@ console.log(nameNearMe);
 
 const numbers = [46, 86, 212, 29, 51, 9, 25, 42, 81]
 
-const numerosImpares = numbers.filter(number=>number % 2 === 1).reduce((acc, item) => { 
-  return acc += item ;
-}, 0)
-
+const numerosImpares = numbers
+  .filter(number => number % 2)
+  .reduce((acc, item) => acc + item, 0);
 console.log(numerosImpares);
 
 /* 
@@ -115,10 +111,10 @@ const data = [{
   population: 263991379
 }]
 
-const somaPopulacao = data.filter(population=>
-  population.country != 'China').reduce((acc, item)=>
-  { return acc += item.population},0);
+const somaPopulacao = data
+  .filter(({ country }) => country !== 'China')
+  .reduce((acc, { population }) => acc + population, 0);
 
-  console.log(somaPopulacao);
+console.log(somaPopulacao);
 
 
