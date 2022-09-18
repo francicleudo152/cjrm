@@ -6,6 +6,26 @@
   - Não utilize a date-fns.
 */
 
+const hoje = new Date();
+// console.log(hoje);
+// console.log(dateFns.isToday(hoje));
+// console.log(dateFns.format(hoje, 'DD/MM/YYYY'));
+
+const formatTime = unid => String(unid).length === 1 ? `0${unid}` : unid;
+
+const format = date => {
+  const dia = date.getDate();
+  const mes = date.getMonth() + 1;
+  const ano = date.getFullYear();
+
+  return `${formatTime(dia)}/${formatTime(mes)}/${ano}`;
+
+}
+
+console.log(format(hoje));
+
+
+
 /*
   02
 
@@ -13,6 +33,20 @@
     data na formatação: "03:07 - domingo, 7 de junho de 2020";
   - Não utilize a date-fns.
 */
+const formatacaoBrasil = hoje => {
+const hora = hoje.getHours();
+const minutos = hoje.getMinutes();
+const semana = hoje.getDay();
+const dias = hoje.getDate();
+const mes = hoje.getMonth();
+const ano = hoje.getFullYear();
+const diasSemanas = ['domingo','segunga-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado'];
+const meses = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outobro','setembro','novembro','dezembro'];
+return `${formatTime(hora)} : ${formatTime(minutos)} - ${diasSemanas[semana]}, ${formatTime(dias)} de ${(meses[mes])} de ${ano} `;
+
+}
+
+console.log(formatacaoBrasil(hoje));
 
 /*
   03
@@ -23,6 +57,11 @@
 */
 
 const user = { id: 42, isVerified: true }
+const {id, isVerified } = user;
+
+console.log(user);
+console.log(id, isVerified);
+
 
 /*
   04
@@ -37,6 +76,12 @@ const user = { id: 42, isVerified: true }
 const robotA = { name: 'Bender' }
 const robotB = { name: 'HAL 9000' }
 
+const {name: nameA} = robotA;
+const {name: nameB} = robotB;
+
+console.log(nameA, nameB);
+
+
 /*
   05
 
@@ -49,6 +94,9 @@ const robotB = { name: 'HAL 9000' }
 const a = 'a'
 const b = 'b'
 const c = 'c'
+
+const alfabeto = {a , b , c};
+console.log(alfabeto);
 
 /*
   06

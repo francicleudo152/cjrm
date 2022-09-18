@@ -17,8 +17,12 @@ const months = [
   'Setembro',
   'Outubro',
   'Novembro',
+  'Fevereiro',
   'Dezembro'
 ]
+
+const fevereiro = months.findIndex(item => item === 'Fevereiro')
+console.log(fevereiro);
 
 /*
   02
@@ -27,11 +31,18 @@ const months = [
   - Exiba o objeto no console.
 */
 
+const presente = new Date();
+console.log(presente.toLocaleString());
+console.log(presente);
+
+
 /*
   03
 
   - Baseado no objeto que você acabou de criar, exiba o ano atual no console.
 */
+
+console.log(presente.getFullYear());
 
 /*
   04
@@ -39,12 +50,16 @@ const months = [
   - Crie um objeto de data que represente um momento passado;
   - Exiba o objeto no console.
 */
+const passado = new Date('August 15 2021 20:16:57')
+console.log(passado);
 
 /*
   05
 
   - Exiba, no console, a hora do objeto que você acabou de criar.
 */
+
+console.log(passado.getHours());
 
 /*
   06
@@ -53,11 +68,18 @@ const months = [
   - Exiba o objeto no console.
 */
 
+const futuro = new Date('May 09 2030 18:16:57')
+console.log(futuro);
+
 /*
   07
 
   - Exiba no console a quantidade de dias entre o momento futuro e o passado.
 */
+
+const quantidadeDias = futuro.getTime() - passado.getTime();
+// console.log(Math.round(quantidadeDias / 86400000));
+console.log(Math.round(quantidadeDias / 1000 / 60 / 60 / 24));
 
 /*
   08
