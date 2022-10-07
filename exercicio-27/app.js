@@ -4,17 +4,19 @@
   - Implemente um código assíncrono entre os console.log() abaixo.
 */
 
-console.log('Linha 1')
-console.log('Linha 2')
-console.log('Linha 3')
-console.log('Linha 4')
+// console.log('Linha 1')
+// console.log('Linha 2')
+// console.log('Linha 3')
+// console.log('Linha 4')
 
+// const assíncrono = setTimeout(()=>{
+// console.log('esse é codigo assincrono');
+// },2000)
 
-
-console.log('Linha 5')
-console.log('Linha 6')
-console.log('Linha 7')
-console.log('Linha 8')
+// console.log('Linha 5')
+// console.log('Linha 6')
+// console.log('Linha 7')
+// console.log('Linha 8')
 
 /*
   02
@@ -23,10 +25,13 @@ console.log('Linha 8')
     "logGreeting" ser exibida no console.
 */
 
-function logGreeting (name) {
-  console.log(`olá, ${name}`)
-}
+// function logGreeting (name) {
+//   console.log(`olá, ${name}`)
+// }
 
+// const x = callback => {
+//   callback('Fran')
+// }
 // x(logGreeting)
 
 /*
@@ -47,13 +52,16 @@ console.log(lesserThanFive)
 */
 
 const prices = [12, 19, 7, 209]
-let totalPrice = 0
+// let totalPrice = 0
 
-for (let i = 0; i < prices.length; i++) {
-  totalPrice += prices[i]
-}
+// for (let i = 0; i < prices.length; i++) {
+//   totalPrice += prices[i]
+// }
+const getTotalPrice = ((acc, price) => acc + price);
+const totalPrice = prices.reduce( getTotalPrice,0);
+console.log(`Preço total: ${totalPrice}`);
 
-console.log(`Preço total: ${totalPrice}`)
+
 
 /*
   05
@@ -63,6 +71,12 @@ console.log(`Preço total: ${totalPrice}`)
 */
 
 let car = { color: 'amarelo' }
+let secondCar = car;
+secondCar.color = 'azul';
+
+console.log(secondCar.color);
+
+
 
 /*
   06
@@ -73,6 +87,15 @@ let car = { color: 'amarelo' }
   - Se todos os argumentos forem passados, retorne a string 'A função foi 
     invocada com 3 argumentos'.
 */
+
+const recebeTres = (arg1,arg2,arg3)=>{
+  const verificar = [arg1,arg2,arg3].includes(undefined);
+  return verificar ? 'A função deve ser invocada com 3 argumentos'
+  : 'A função foi invocada com 3 argumentos'
+
+};
+
+ console.log(recebeTres('fran','sara','kele'));
 
 /*
   07
@@ -100,3 +123,17 @@ let booksBox = {
   spaces: 5,
   booksIn: 0
 }
+
+booksBox.addbook = (qtdLivros)=>{
+  booksBox.booksIn += qtdLivros
+
+  if (booksBox.booksIn === booksBox.spaces) {
+    return "A caixa já está cheia";
+  }
+
+  return `"Já há ${booksBox.booksIn} livros na caixa"`;
+}
+
+console.log(booksBox.addbook(4));
+console.log(booksBox.addbook(1));
+

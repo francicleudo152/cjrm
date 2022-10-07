@@ -108,11 +108,8 @@ const useDataSomewhereElse = value => {
   console.log(value)
 }
 
-const updateSomething = (data = {}) => {
-  const target = data.target
-  const property = data.property
-  let willChange = data.willChange
-
+const updateSomething = ({target, property, willChange} = {}) => {
+ 
   if (willChange === 'valor indesejado') {
     willChange = 'valor desejado'
   }
@@ -125,6 +122,7 @@ const updateSomething = (data = {}) => {
 }
 
 updateSomething({ target: '1', property: '2', willChange: 'valor indesejado' })
+// updateSomething({ 1, 2, 'valor indesejado' })
 
 /*
   07
@@ -141,13 +139,11 @@ const updateClock = () => {
   const minutes = present.getMinutes()
   const seconds = present.getSeconds()
 
-  const clockHTML = `
-    <span>${String(hours).length === 1 ? `0${hours}` : hours}</span> :
-    <span>${String(minutes).length === 1 ? `0${minutes}` : minutes}</span> :
-    <span>${String(seconds).length === 1 ? `0${seconds}` : seconds}</span>
-  `
-
-  clockContainer.innerHTML = clockHTML
+  clockContainer.innerHTML = `
+    <span>${formatTime(hours)}</span> :
+    <span>${formatTime(minutes)}</span> :
+    <span>${formatTime(seconds)}</span> 
+    `
 }
 
 setInterval(updateClock, 1000)
