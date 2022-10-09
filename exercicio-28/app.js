@@ -14,7 +14,24 @@
     a operação foi completada), exiba no console a mensagem 'Não foi possível 
     obter os dados do pokémon';
   - Teste também a verificação do item acima.
-*/
+// */
+// const request = new XMLHttpRequest();
+// request.addEventListener('readystatechange', ()=>{
+//   if (request.readyState === 4 && request.status === 200) {
+//      console.log(request.responseText);
+//      return
+//   }
+//   if (request.readyState === 4) {
+//     console.log('Não foi possível obter os dados do pokémon'); 
+//     return
+//   }
+    
+// })
+// request.open('Get','https://pokeapi.co/api/v2/pokemon/pikachu');
+// request.send();
+
+// console.log(request);
+
 
 /*
   02
@@ -31,14 +48,63 @@
     - Quantos metros você caminhou (number iniciado em 0).
 */
 
-/*
-  03
+const pessoa = {
+  nome: 'Fran',
+  sobrenome: 'Freitas',
+  sexo: 'masculino',
+  idade: 43,
+  altura: 1.60,
+  peso: 78,
+  andando: false,
+  caminhou: 0
+}
 
-  - Logo abaixo, adicione ao objeto um método que adiciona 1 ao valor da 
-    propriedade que armazena a idade;
+function aniversario(){
+  pessoa.idade++;
+};
+
+function andando(metros){
+  pessoa.caminhou += metros;
+  pessoa.andando = true;
+};
+
+const metros = [4,6,9,8];
+
+metros.forEach(metro =>{
+   andando(metro);
+})
+
+
+for (let i = 0; i < 5; i++) {
+  aniversario(); 
+}
+
+function messagem() {
+  let ano = pessoa.idade === 1 ? 'ano' : 'anos';
+  let sexo = pessoa.sexo === 'masculino' ? 'o' : 'a';
+  let metro = pessoa.caminhou === 1 ? 'metro' : 'metros';
+  
+  return ` 'Oi. Eu sou ${sexo} ${pessoa.nome}, tenho ${pessoa.idade} ${ano}, 
+  ${pessoa.altura} metros de altura, peso ${pessoa.peso} quilos e, só hoje, eu já caminhei
+  ${pessoa.caminhou} ${metro}.'`
+}
+console.log(pessoa.idade);
+console.log(pessoa.caminhou, pessoa.andando);
+
+console.log( messagem());
+
+
+
+/*
+03
+
+- Logo abaixo, adicione ao objeto um método que adiciona 1 ao valor da 
+propriedade que armazena a idade;
   - A cada vez que o método é invocado, 1 deve ser somado à idade atual;
   - Após criar o método, adicione 5 anos à idade do objeto.
 */
+
+
 
 /*
   04
@@ -80,6 +146,21 @@
     - Faça isso até que 7 valores truthy sejam passados.
 */
 
+const verdadeira = value => Boolean(value);
+
+const isFalsys = [false, 0, null, undefined, NaN];
+const isTruthys = [true, 1, '0', () => {}, {}, [], -1, 'false']
+
+isFalsys.forEach(isFalsy=>{
+  console.log(verdadeira(isFalsy));
+})
+
+
+isTruthys.forEach(isTruthy=>{
+  console.log(verdadeira(isTruthy));
+})
+
+
 /*
   07
 
@@ -98,3 +179,28 @@
 
   Dica: propriedades de objetos podem ser declaradas como strings.
 */
+
+const buscarLivro = nomeLivro => {
+  const livro = {
+    'jurassic Park':{
+    totalPagina: 466,
+    autor: 'Michel Crichton',
+    pubicado: 'Ballantine Books' 
+    },
+    'As armas da Persuasão':{
+    totalPagina: 304,
+    autor: 'Robert Cialdini',
+    pubicado: 'Sextante' 
+
+    },
+    '2001: Uma Odisseia no Espaço': {
+    totalPagina: 336,
+    autor: 'Arthur C. Clarke',
+    pubicado: 'Aleph' 
+    }
+  }
+
+  return livro[nomeLivro] ? livro[nomeLivro] : livro;
+}
+
+console.log(buscarLivro('jurassic Park'));
