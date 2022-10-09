@@ -80,18 +80,22 @@ for (let i = 0; i < 5; i++) {
 }
 
 function messagem() {
-  let ano = pessoa.idade === 1 ? 'ano' : 'anos';
-  let sexo = pessoa.sexo === 'masculino' ? 'o' : 'a';
-  let metro = pessoa.caminhou === 1 ? 'metro' : 'metros';
-  
-  return ` 'Oi. Eu sou ${sexo} ${pessoa.nome}, tenho ${pessoa.idade} ${ano}, 
-  ${pessoa.altura} metros de altura, peso ${pessoa.peso} quilos e, só hoje, eu já caminhei
-  ${pessoa.caminhou} ${metro}.'`
+  // desmotando o objeto 
+  const {sexo,nome,altura,peso,idade,caminhou} = pessoa
+
+  let ano = idade === 1 ? 'ano' : 'anos';
+  let genero = sexo === 'masculino' ? 'o' : 'a';
+  let metro = caminhou === 1 ? 'metro' : 'metros';
+
+  return ` 'Oi. Eu sou ${genero} ${nome}, tenho ${idade} ${ano}, 
+  ${altura} metros de altura, peso ${peso} quilos e, só hoje, eu já caminhei
+  ${caminhou} ${metro}.'`
 }
+
 console.log(pessoa.idade);
 console.log(pessoa.caminhou, pessoa.andando);
 
-console.log( messagem());
+console.log(messagem());
 
 
 
