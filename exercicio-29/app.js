@@ -13,6 +13,44 @@
       executado quando o request anterior for finalizado.
 */
 
+
+const buscarPokemon = (url, callback) => {
+ const request = new XMLHttpRequest();
+
+  request.addEventListener('readystatechange', ()=>{
+    const resultadoOk = request.status === 200 && request.readyState === 4;
+    const resultadoNaoOk = request.readyState === 4;
+
+    if (resultadoOk) {
+      const dados = JSON.parse(request.responseText);
+      callback(null, dados);
+      return
+    }
+
+    if (resultadoNaoOk) {
+      callback('Não foi possível obter o Pokémon', null);
+    }
+  })
+
+  request.open('Get',url);
+  request.send();
+}
+
+
+buscarPokemon('https://pokeapi.co/api/v2/pokemon/bulbasauri', (erro, dados)=>{
+  console.log(erro, dados);
+  buscarPokemon('https://pokeapi.co/api/v2/pokemon/charmander', (erro, dados)=>{
+  console.log(erro, dados);
+  buscarPokemon('https://pokeapi.co/api/v2/pokemon/squirtle', (erro, dados)=>{
+  console.log(erro, dados);
+})
+
+})
+
+})
+
+
+
 /*
   02
 

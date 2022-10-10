@@ -1,4 +1,4 @@
-const bucarPokemon = callback => {
+const bucarPokemon = (url, callback) => {
     const request = new XMLHttpRequest();
     
     request.addEventListener('readystatechange', ()=>{
@@ -7,27 +7,28 @@ const bucarPokemon = callback => {
         const requestNotOk = request.readyState === 4;
     
       if (requestOk) {
-        callback(null, request.responseText)
+        const dados = JSON.parse(request.responseText)
+        callback(null, dados)
          return
       }
     
       if (requestNotOk) {
-        callback('Nao foi possivel obter os dados do pokemon',null)
+        callback('Não foi possivel obter os dados do pokemon',null)
       }
         
     })
     
-    request.open('Get','https://pokeapi.co/api/v2/pokemon/pikachu2');
+    // request.open('Get','https://pokeapi.co/api/v2/pokemon/pikachu');
+    request.open('Get', url);
     request.send();
 }
 
-bucarPokemon((error, dados)=>{
-    console.log('callback foi executado');
-
-    if (error) {
-        console.log(error);
-        return
-    }
-
+bucarPokemon('../request/pokemon.json', (error, dados) => {
+  console.log(dados);
+  bucarPokemon('../request/pokemon1.json', (error, dados) => {
     console.log(dados);
+    bucarPokemon('../request/pokemon2.json', (error, dados) => {
+      console.log(dados);
+    })
+  })
 })

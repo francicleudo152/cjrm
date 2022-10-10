@@ -1,0 +1,13 @@
+[
+    {"nome":"pikachu",
+      "cor" : "amarelo"
+    },
+    {
+        "nome":"charmelon",
+        "cor":"azul"
+    },
+    {
+        "nome":"pidgey",
+        "cor":"vermelho"
+    }
+]
