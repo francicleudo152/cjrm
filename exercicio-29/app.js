@@ -15,9 +15,9 @@
 
 
 const buscarPokemon = (url, callback) => {
- const request = new XMLHttpRequest();
+  const request = new XMLHttpRequest();
 
-  request.addEventListener('readystatechange', ()=>{
+  request.addEventListener('readystatechange', () => {
     const resultadoOk = request.status === 200 && request.readyState === 4;
     const resultadoNaoOk = request.readyState === 4;
 
@@ -32,20 +32,20 @@ const buscarPokemon = (url, callback) => {
     }
   })
 
-  request.open('Get',url);
+  request.open('Get', url);
   request.send();
+
 }
 
+buscarPokemon('https://pokeapi.co/api/v2/pokemon/bulbasaur', (erro, dados) => {
+  console.log(erro, `Pokémon obtido: ${dados.name}`);
+  buscarPokemon('https://pokeapi.co/api/v2/pokemon/charmander', (erro, dados) => {
+    console.log(erro, dados);
+    buscarPokemon('https://pokeapi.co/api/v2/pokemon/squirtle', (erro, dados) => {
+      console.log(erro, dados);
+    })
 
-buscarPokemon('https://pokeapi.co/api/v2/pokemon/bulbasauri', (erro, dados)=>{
-  console.log(erro, dados);
-  buscarPokemon('https://pokeapi.co/api/v2/pokemon/charmander', (erro, dados)=>{
-  console.log(erro, dados);
-  buscarPokemon('https://pokeapi.co/api/v2/pokemon/squirtle', (erro, dados)=>{
-  console.log(erro, dados);
-})
-
-})
+  })
 
 })
 
@@ -70,6 +70,17 @@ buscarPokemon('https://pokeapi.co/api/v2/pokemon/bulbasauri', (erro, dados)=>{
     2) Pesquisar no MDN.
 */
 
+const newArray = (array=[])=>{
+  const element = [];
+  for (let i = 0; i < array.length; i++) {
+    element.push(array[i] *= 2); 
+  }
+  return element;
+}
+ console.log(newArray([1,2,3])); 
+
+
+
 /*
   03
 
@@ -82,7 +93,7 @@ const person = {
   getName: () => this.name
 }
 
-// console.log(person.getName())
+console.log(person.getName())
 
 /*
   04
