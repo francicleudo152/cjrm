@@ -70,15 +70,23 @@ buscarPokemon('https://pokeapi.co/api/v2/pokemon/bulbasaur', (erro, dados) => {
     2) Pesquisar no MDN.
 */
 
-const newArray = (array=[])=>{
-  const element = [];
-  for (let i = 0; i < array.length; i++) {
-    element.push(array[i] *= 2); 
-  }
-  return element;
-}
- console.log(newArray([1,2,3])); 
+// const newArray = (array=[])=>{
+//   const element = [];
+//   for (let i = 0; i < array.length; i++) {
+//     element.push(array[i] *= 2); 
+//   }
+//   return element;
+// }
+//  console.log(newArray([1,2,3])); 
 
+const map = (array, func) => {
+   const newArray = [];
+   array.forEach(item => newArray.push(func(item)));
+   return newArray;
+}
+
+console.log(map([1,2,3],number => number * 2));
+console.log(map([1,2,3],number => number * 10));
 
 
 /*
@@ -90,7 +98,9 @@ const newArray = (array=[])=>{
 
 const person = {
   name: 'Roger',
-  getName: () => this.name
+  getName: function () {
+    return this.name;
+  }
 }
 
 console.log(person.getName())
@@ -114,14 +124,9 @@ const x = 'x'
     conseguir.
 */
 
-const getFullName = (user) => {
-  const firstName = user.firstName
-  const lastName = user.lastName
+const getFullName = ({ firstName, lastName }) => `${firstName} ${lastName}`;
 
-  return `${firstName} ${lastName}`
-}
-
-console.log(getFullName({ firstName: 'Afonso', lastName: 'Solano' }))
+console.log(getFullName({ firstName: 'Afonso', lastName: 'Solano' }));
 
 /*
   06
@@ -136,6 +141,33 @@ console.log(getFullName({ firstName: 'Afonso', lastName: 'Solano' }))
     a mensagem 'Não temos o equivalente hexadecimal para COR';
   - Exiba o hexadecimal de 8 cores diferentes usando a função criada acima.
 */
+
+const hexadecimal = color => {
+  const colors = {
+    red: '#A31419',
+    green: '#10A337',
+    blue: '#4C91F0',
+    yellow: '#F0EA6F',
+    purple: '#8132A3'
+  }
+  return colors[color]
+  ?`'O hexadecimal para a cor ${colors[color]} é HEXADECIMAL'`
+  : `'Não temos o equivalente hexadecimal para ${color}'`;
+}
+
+const colors = [
+  'red',
+  'green',
+  'blue',
+  'black',
+  'yellow',
+  'purple',
+  'gray'
+]
+
+
+colors.forEach(color => console.log(hexadecimal(color)))
+;
 
 
 /*
@@ -161,3 +193,10 @@ const people = [
   { id: 9 , name: 'Gabriel', age: 20, federativeUnit: 'São Paulo' },
   { id: 73, name: 'Aline', age: 19, federativeUnit: 'Brasília' }
 ]
+
+const ageFrequency = people.reduce((acc, person)=>{
+  acc[person.age] = acc[person.age] + 1 || 1
+  return acc
+},{})
+
+console.log(ageFrequency);
