@@ -8,6 +8,18 @@
     do GitHub.
 */
 
+const userGit = async()=>{
+  const response = await fetch('https://api.github.com/users/francicleudo152')
+  return await response.json();
+}
+
+const dadosuser = async () => {
+  const user = await userGit()
+  console.log(user);
+}
+
+dadosuser();
+
 /*
   02
 
@@ -17,6 +29,9 @@
 */
 
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+const numerosDiviveis2e3 = numbers.filter(number=>number % 2 === 0 || number % 3 === 0);
+console.log(numerosDiviveis2e3);
 
 /*
   03
@@ -32,6 +47,11 @@ const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     - Rafaela => "PRaPfaPePla".
 */
 
+const nome = ['fran','ci','cle','u','do'];
+const linguaP = nome.join('P').replace(nome[0],'P'+nome[0]);
+console.log(linguaP);
+
+
 /*
   04
 
@@ -46,6 +66,10 @@ const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   Dica: pesquise pelo método split.
 */
+const meuNome = 'FRANCICLEUDO';
+meuNome.split('').forEach((letra,index)=>
+console.log(`${letra} é ${index + 1}ª letra do meu nome `)
+);
 
 /*
   05
@@ -59,6 +83,14 @@ const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   Dica: pesquise pelo método Object.keys().
 */
+const person = {
+  name: 'Fran',
+  lastname:'Freitas',
+  age: 43
+}
+
+const propriedades = Object.keys(person);
+console.log(propriedades);
 
 /*
   06
@@ -74,6 +106,19 @@ const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 */
 
 const scores = [100, 90, 85, 100, 60, 85, 100, 90, 55, 75, 60]
+
+// const getValue = scores.reduce((acc,score)=>{
+//   return acc += score === 100
+// },0);
+
+// console.log(getValue);
+
+const getValue = (score, value) => score.reduce((acc,score)=>{
+  acc += score === value;
+  return acc;
+},0);
+
+console.log(getValue(scores, 90)); 
 
 /*
   07

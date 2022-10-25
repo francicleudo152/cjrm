@@ -20,3 +20,27 @@
       listados na documentação: https://developers.giphy.com/docs/api/endpoint#search
   - Ignore os avisos no console. Para limpá-lo, pressione "ctrl + L".
 */
+// 
+
+const form = document.querySelector('form');
+
+form.addEventListener('submit', async event => {
+  event.preventDefault();
+
+  const inputValue = event.target.search.value;
+  const api_key = 'HEBe3ECRAQAjYez479ZayMS38hKjXEJk';
+  const url = `https://api.giphy.com/v1/gifs/search?api_key=${api_key}&limit=1&q=${inputValue}`;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('Não foi possivel obter os dados');
+    }
+    const GIFData = await response.json();
+    console.log(GIFData);
+    
+  } catch (error) {
+      alert(`Erro: ${error.message}`);
+  }
+})
+
+// console.log(form);
