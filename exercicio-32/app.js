@@ -23,6 +23,7 @@
 // 
 
 const form = document.querySelector('form');
+const div = document.querySelector('div');
 
 form.addEventListener('submit', async event => {
   event.preventDefault();
@@ -36,7 +37,12 @@ form.addEventListener('submit', async event => {
       throw new Error('Não foi possivel obter os dados');
     }
     const GIFData = await response.json();
-    console.log(GIFData);
+    const gifs = GIFData.data[0].images.downsized.url;
+    const img = document.createElement('img');
+    img.setAttribute('src', gifs);
+    img.setAttribute('alt', GIFData.data[0].title);
+    div.insertAdjacentElement('afterbegin',img);
+    form.reset();
     
   } catch (error) {
       alert(`Erro: ${error.message}`);
