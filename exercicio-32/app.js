@@ -23,20 +23,29 @@
 // 
 
 const form = document.querySelector('form');
+const div = document.querySelector('div');
+
+const api_key = 'HEBe3ECRAQAjYez479ZayMS38hKjXEJk';
+const getGIFsApiUrl =(GIFsName) => `https://api.giphy.com/v1/gifs/search?api_key=${api_key}&limit=1&q=${GIFsName}`;
 
 form.addEventListener('submit', async event => {
   event.preventDefault();
 
   const inputValue = event.target.search.value;
-  const api_key = 'HEBe3ECRAQAjYez479ZayMS38hKjXEJk';
-  const url = `https://api.giphy.com/v1/gifs/search?api_key=${api_key}&limit=1&q=${inputValue}`;
+   const GIFsApiUrl = getGIFsApiUrl(inputValue);
+
   try {
-    const response = await fetch(url);
+    const response = await fetch(GIFsApiUrl);
     if (!response.ok) {
       throw new Error('Não foi possivel obter os dados');
     }
     const GIFData = await response.json();
-    console.log(GIFData);
+    const gifs = GIFData.data[0].images.downsized.url;
+    const img = document.createElement('img');
+    img.setAttribute('src', gifs);
+    img.setAttribute('alt', GIFData.data[0].title);
+    div.insertAdjacentElement('afterbegin',img);
+    form.reset();
     
   } catch (error) {
       alert(`Erro: ${error.message}`);
