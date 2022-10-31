@@ -26,42 +26,42 @@ const form = document.querySelector('form');
 const div = document.querySelector('div');
 
 const api_key = 'HEBe3ECRAQAjYez479ZayMS38hKjXEJk';
-const getGIFsApiUrl =(GIFsName) => `https://api.giphy.com/v1/gifs/search?api_key=${api_key}&limit=1&q=${GIFsName}`;
+const getGIFsApiUrl = GIFsName =>
+ `https://api.giphy.com/v1/gifs/search?api_key=${api_key}&limit=1&q=${GIFsName}`;
 
+ // função para gerar imagens gifs
+ // foi criada uma função que recebe dois parametros
+ // e logo abaixo criado um elemento html (img e os atributos src e alt) e rotornado.
 const regadorImg = (GIFData, gifs)=>{
   const img = document.createElement('img');
   img.setAttribute('src', gifs);
   img.setAttribute('alt', GIFData.data[0].title);
-
   return img;
 }
 
-const fetchGif = async(inputValue) => {
+
+const fetchGif = async inputValue => {
   try {
     const GIFsApiUrl = getGIFsApiUrl(inputValue);
     const response = await fetch(GIFsApiUrl);
-    if (!response.ok) {
+    if (!response.ok) { 
       throw new Error('Não foi possivel obter os dados');
     }
     return response.json()
   } catch (error) {
     alert(`Erro: ${error.message}`);
 }
-
 }
 
-const InserGifDom = async (inputValue) => {
+const InserGifDom = async inputValue => {
   const GIFData = await fetchGif(inputValue)
   if (GIFData) {
     const gifs = GIFData.data[0].images.downsized.url;
     const img = regadorImg(GIFData, gifs);
-  
     div.insertAdjacentElement('afterbegin', img);
-  
     form.reset(); 
   }
 }
-
 
 form.addEventListener('submit', event => {
   event.preventDefault();
@@ -71,4 +71,3 @@ form.addEventListener('submit', event => {
 
 })
 
-// console.log(form);
